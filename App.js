@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from 'react-navigation';
 import { StyleSheet, Platform, Image, Button, Text, View, ScrollView } from 'react-native';
 import firebase from 'react-native-firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import DeviceInfo from 'react-native-device-info'
 class HomeScreen extends React.Component {
   render() {
     return (
@@ -18,6 +19,9 @@ class SettingsScreen extends React.Component {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Settings!</Text>
+        <Text style={styles.instructions}>
+        Settings
+        </Text>
         <Icon name="rocket" size={30} color="#900" /> 
       </View>
     );
@@ -71,10 +75,59 @@ class meow extends React.Component {
     );
   }
 }
+
+class info extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+<ScrollView>
+<Text style={styles.instructions}>
+        {
+          'getAPILevel:'+DeviceInfo.getAPILevel() + '\n' +
+          'getApplicationName:' + DeviceInfo.getApplicationName() +'\n' +
+          'getBrand:'+DeviceInfo.getBrand()+'\n' +
+          'getBuildNumber:'+DeviceInfo.getBuildNumber()+'\n' +
+          'getBundleId:'+DeviceInfo.getBundleId()+'\n' +
+          'getCarrier:'+DeviceInfo.getCarrier()+'\n' +
+          'getDeviceCountry:'+DeviceInfo.getDeviceCountry()+'\n' +
+          'getDeviceId:'+DeviceInfo.getDeviceId()+'\n' +
+          'getDeviceLocale:'+DeviceInfo.getDeviceLocale()+'\n' +
+          'getDeviceName:'+DeviceInfo.getDeviceName()+'\n' +
+          'getFirstInstallTime:'+DeviceInfo.getFirstInstallTime()+'\n' +
+          'getFontScale:'+DeviceInfo.getFontScale()+'\n' +
+          'getFreeDiskStorage:'+DeviceInfo.getFreeDiskStorage()+'\n' +
+          'getInstanceID:'+DeviceInfo.getInstanceID()+'\n' +
+          'getLastUpdateTime:'+DeviceInfo.getLastUpdateTime()+'\n' +
+          'getManufacturer:'+DeviceInfo.getManufacturer()+'\n' +
+          'getMaxMemory:'+DeviceInfo.getMaxMemory()+'\n' +
+          'getModel:'+DeviceInfo.getModel()+'\n' +
+          'getPhoneNumber:'+DeviceInfo.getPhoneNumber()+'\n' +
+          'getReadableVersion:'+DeviceInfo.getReadableVersion()+'\n' +
+          'getSerialNumber:'+DeviceInfo.getSerialNumber()+'\n' +
+          'getSystemName:'+DeviceInfo.getSystemName()+'\n' +
+          'getSystemVersion:'+DeviceInfo.getSystemVersion()+'\n' +
+          'getTimezone:'+DeviceInfo.getTimezone()+'\n' +
+          'getTotalDiskCapacity:'+DeviceInfo.getTotalDiskCapacity()+'\n' +
+          'getTotalMemory:'+DeviceInfo.getTotalMemory()+'\n' +
+          'getUniqueID:'+DeviceInfo.getUniqueID()+'\n' +
+          'getUserAgent:'+DeviceInfo.getUserAgent()+'\n' +
+          'is24Hour:'+DeviceInfo.is24Hour()+'\n' +
+          'isEmulator:'+DeviceInfo.isEmulator()+'\n' +
+          'isPinOrFingerprintSet:'+DeviceInfo.isPinOrFingerprintSet()+'\n' +
+          'isTablet:'+DeviceInfo.isTablet()
+        }
+        </Text>
+      </ScrollView>        
+        </View>
+    );
+  }
+}
 export default createBottomTabNavigator({
   Home: { screen: HomeScreen },
   Settings: { screen: SettingsScreen },
   meow: { screen: meow },
+  info: { screen: info },
+
 });
 
 
