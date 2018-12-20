@@ -11,7 +11,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
-import io.invertase.firebase.RNFirebasePackage;
+// import io.invertase.firebase.RNFirebasePackage;
 // optional packages - add/remove as appropriate
 import io.invertase.firebase.admob.RNFirebaseAdMobPackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
@@ -46,7 +46,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.asList(
         new MainReactPackage(),
             new VectorIconsPackage(),
-            new RNFirebasePackage(),
+//            new RNFirebasePackage(),
         new RNFirebasePackage(),
         // add/remove these packages as appropriate
         new RNFirebaseAdMobPackage(),
