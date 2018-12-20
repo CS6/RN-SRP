@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 import { StyleSheet, Platform, Image, Button, Text, View, ScrollView } from 'react-native';
 import firebase from 'react-native-firebase';
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome';
 class HomeScreen extends React.Component {
   render() {
     return (
@@ -18,7 +18,7 @@ class SettingsScreen extends React.Component {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Settings!</Text>
-        {/* <Icon name="rocket" size={30} color="#900" /> */}
+        <Icon name="rocket" size={30} color="#900" /> 
       </View>
     );
   }
