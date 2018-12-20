@@ -82,8 +82,25 @@ class info extends React.Component {
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 <ScrollView>
 <Text style={styles.instructions}>
+{Platform.OS === 'ios' ? (
+  <Text style={styles.instructions}>
+    IOS
+  </Text>
+) : (
+  <Text style={styles.instructions}>
+    ANDROID    |
+    {'getAPILevel:'+DeviceInfo.getAPILevel() + '\n' +
+  'getFirstInstallTime:'+DeviceInfo.getFirstInstallTime()+'\n' +
+  'getInstanceID:'+DeviceInfo.getInstanceID()+'\n' +
+  'getLastUpdateTime:'+DeviceInfo.getLastUpdateTime()+'\n' +
+  'getMaxMemory:'+DeviceInfo.getMaxMemory()+'\n' +
+  'getPhoneNumber:'+DeviceInfo.getPhoneNumber()+'\n' +
+  'getSerialNumber:'+DeviceInfo.getSerialNumber()
+  }
+  </Text>
+)}
         {
-          'getAPILevel:'+DeviceInfo.getAPILevel() + '\n' +
+          
           'getApplicationName:' + DeviceInfo.getApplicationName() +'\n' +
           'getBrand:'+DeviceInfo.getBrand()+'\n' +
           'getBuildNumber:'+DeviceInfo.getBuildNumber()+'\n' +
@@ -93,17 +110,12 @@ class info extends React.Component {
           'getDeviceId:'+DeviceInfo.getDeviceId()+'\n' +
           'getDeviceLocale:'+DeviceInfo.getDeviceLocale()+'\n' +
           'getDeviceName:'+DeviceInfo.getDeviceName()+'\n' +
-          'getFirstInstallTime:'+DeviceInfo.getFirstInstallTime()+'\n' +
           'getFontScale:'+DeviceInfo.getFontScale()+'\n' +
           'getFreeDiskStorage:'+DeviceInfo.getFreeDiskStorage()+'\n' +
-          'getInstanceID:'+DeviceInfo.getInstanceID()+'\n' +
-          'getLastUpdateTime:'+DeviceInfo.getLastUpdateTime()+'\n' +
+          
           'getManufacturer:'+DeviceInfo.getManufacturer()+'\n' +
-          'getMaxMemory:'+DeviceInfo.getMaxMemory()+'\n' +
           'getModel:'+DeviceInfo.getModel()+'\n' +
-          'getPhoneNumber:'+DeviceInfo.getPhoneNumber()+'\n' +
           'getReadableVersion:'+DeviceInfo.getReadableVersion()+'\n' +
-          'getSerialNumber:'+DeviceInfo.getSerialNumber()+'\n' +
           'getSystemName:'+DeviceInfo.getSystemName()+'\n' +
           'getSystemVersion:'+DeviceInfo.getSystemVersion()+'\n' +
           'getTimezone:'+DeviceInfo.getTimezone()+'\n' +
