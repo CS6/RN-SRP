@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "766952723650",
+    "firebase_url": "https://rn-srp.firebaseio.com",
+    "project_id": "rn-srp",
+    "storage_bucket": "rn-srp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766952723650:android:8d4e41f333ad27fa",
+        "android_client_info": {
+          "package_name": "com.invertase.rnfirebasestarter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766952723650-tt19m85ts9dnhuaei1q2cinemk28m1ci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsAeYSeilvi23FUL3WDD6tLqBNZdUYbNY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
