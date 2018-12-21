@@ -1,9 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
-import { StyleSheet, Platform, Image, Button, Text, View, ScrollView } from 'react-native';
+import { Component, StyleSheet, Platform, Image,     TextInput
+,  Button, Text, View, ScrollView } from 'react-native';
 import firebase from 'react-native-firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info'
+import QRCode from 'react-native-qrcode';
+
 class HomeScreen extends React.Component {
   render() {
     return (
@@ -13,7 +16,28 @@ class HomeScreen extends React.Component {
     );
   }
 }
+class HelloWorld extends React.Component {
+  state = {
+    text: 'http://facebook.github.io/react-native/',
+  };
 
+  render() {
+    return (
+      <View style={styles.container}>
+        <TextInput
+          style={styles.input}
+          onChangeText={(text) => this.setState({text: text})}
+          value={this.state.text}
+        />
+        <QRCode
+          value={this.state.text}
+          size={200}
+          bgColor='purple'
+          fgColor='white'/>
+      </View>
+    );
+  };
+}
 class SettingsScreen extends React.Component {
   render() {
     return (
@@ -140,6 +164,9 @@ export default createBottomTabNavigator({
   Settings: { screen: SettingsScreen },
   meow: { screen: meow },
   info: { screen: info },
+  HelloWorld: { screen: HelloWorld }
+
+  
 
 });
 
@@ -179,5 +206,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 4,
     textAlign: 'center',
-  }
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    margin: 10,
+    borderRadius: 5,
+    padding: 5,
+}
 });
