@@ -80,13 +80,13 @@ class info extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-<ScrollView>
-<Text style={styles.instructions}>
 {Platform.OS === 'ios' ? (
   <Text style={styles.instructions}>
-    IOS
+    IOS TAT
   </Text>
 ) : (
+  <ScrollView>
+
   <Text style={styles.instructions}>
     ANDROID    |
     {'getAPILevel:'+DeviceInfo.getAPILevel() + '\n' +
@@ -97,9 +97,7 @@ class info extends React.Component {
   'getPhoneNumber:'+DeviceInfo.getPhoneNumber()+'\n' +
   'getSerialNumber:'+DeviceInfo.getSerialNumber()
   }
-  </Text>
-)}
-        {
+  {
           
           'getApplicationName:' + DeviceInfo.getApplicationName() +'\n' +
           'getBrand:'+DeviceInfo.getBrand()+'\n' +
@@ -128,8 +126,11 @@ class info extends React.Component {
           'isPinOrFingerprintSet:'+DeviceInfo.isPinOrFingerprintSet()+'\n' +
           'isTablet:'+DeviceInfo.isTablet()
         }
-        </Text>
-      </ScrollView>        
+  </Text>
+        </ScrollView>        
+
+)}
+        
         </View>
     );
   }
