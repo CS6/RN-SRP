@@ -6,12 +6,119 @@ import firebase from 'react-native-firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info'
 import QRCode from 'react-native-qrcode';
+import ScrollableTabView, { ScrollableTabBar, DefaultTabBar } from 'react-native-scrollable-tab-view';
+
+import CommonHead from './app/components/commonHead';
+
+//引用插件
+
+import Recommend from './app/page/home/recommend';
+import Otherpage from './app/page/home/otherpage';
+
+
+class scroll_Screen extends React.Component {
+  
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        tabShow: false,
+        label: ['推荐', '新品', '居家', '餐厨', '配件', '服装', '电器', '洗护', '杂货', '饮食', '婴童', '志趣'],
+    };
+}
+
+componentDidMount() {
+    setTimeout(() => {
+        this.setState({
+            tabShow: true
+        });
+    }, 0)
+}
+
+// 头部左侧
+renderLeftItem() {
+    return (
+        <TouchableOpacity onPress={() => { this.props.navigation.navigate('Search') }} style={styles.navLeft}>
+            <Image source={require('./app/img/scanning.png')} style={styles.navIcon} />
+            <Text style={styles.navText}>扫一扫</Text>
+        </TouchableOpacity>
+    )
+}
+// 头部中间
+renderTitleItem() {
+    return (
+        <TouchableOpacity onPress={() => { this.props.navigation.navigate('Search') }}>
+            <View style={styles.searchBox}>
+                <Image source={require('./app/img/search.png')} style={styles.searchIcon} />
+                <Text style={styles.searchContent}>搜索商品, 共10161款好物</Text>
+            </View>
+        </TouchableOpacity>
+    )
+}
+// 头部右侧
+renderRightItem() {
+    return (
+        <TouchableOpacity onPress={() => { this.props.navigation.navigate('MessageCenter') }} style={styles.navRight}>
+            <Image source={require('./app/img/remind.png')} style={styles.navIcon} />
+            <Text style={styles.navText}>消息</Text>
+        </TouchableOpacity>
+    )
+}
+
+// 滑动tab
+renderScrollableTab() {
+    let label = this.state.label
+    if (this.state.tabShow){
+        return (
+            
+                <ScrollableTabView
+                    renderTabBar={() => <ScrollableTabBar />}
+                    tabBarBackgroundColor='#fff'
+                    tabBarActiveTextColor='#b4282d'
+                    tabBarInactiveTextColor='#333'
+                    tabBarUnderlineStyle={styles.tabBarUnderline}
+                >
+                    {
+                        label.map((item, index) => {
+                            if (item == '推荐') {
+                                return (
+                                    <Recommend tabLabel={item} key={index}/>
+                                )
+                            } else {
+                                return (
+                                    <Otherpage tabLabel={item} key={index} />
+                                )
+                            }
+                        })
+                    }
+                </ScrollableTabView>
+            
+        )
+    }
+    
+}
+
+render() {
+    return (
+        <View style={styles.container}>
+            <CommonHead
+                leftItem={() => this.renderLeftItem()}
+                titleItem={() => this.renderTitleItem()}
+                rightItem={() => this.renderRightItem()}
+            />
+            <View style={{ flex: 1 }}>
+            {this.renderScrollableTab()}
+            </View>
+        </View>
+    );
+}
+}
+
 
 class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-
       
         <Text>Home!</Text>
         <Icon name="battery-full" size={30} color="#900" /> 
@@ -22,8 +129,6 @@ class HomeScreen extends React.Component {
         <Icon name="bed" size={30} color="#900" /> 
         <Icon name="american-sign-language-interpreting" size={30} color="#777" /> 
 
-
-        
       </View>
     );
   }
@@ -36,6 +141,7 @@ class HelloWorld extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+
         <TextInput
           style={styles.input}
           onChangeText={(text) => this.setState({text: text})}
@@ -175,6 +281,7 @@ class info extends React.Component {
   }
 }
 export default createBottomTabNavigator({
+  scroll: {screen: scroll_Screen},
   Home: { screen: HomeScreen },
   Settings: { screen: SettingsScreen },
   meow: { screen: meow },
@@ -255,5 +362,6 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 5,
     padding: 5,
-}
+},
+
 });
