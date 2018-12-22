@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBottomTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator,SafeAreaView } from 'react-navigation';
 import { Component, StyleSheet, Platform, Image,     TextInput
 ,  Button, Text, View, ScrollView, TouchableOpacity, Dimensions,} from 'react-native';
 import firebase from 'react-native-firebase';
@@ -101,6 +101,8 @@ renderScrollableTab() {
 
 render() {
     return (
+      <SafeAreaView style={styles.container}>
+
         <View style={styles.container}>
             <CommonHead
                 leftItem={() => this.renderLeftItem()}
@@ -111,6 +113,7 @@ render() {
             {this.renderScrollableTab()}
             </View>
         </View>
+        </SafeAreaView>
     );
 }
 }
@@ -119,6 +122,8 @@ render() {
 class HomeScreen extends React.Component {
   render() {
     return (
+      <SafeAreaView style={styles.container}>
+
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       
         <Text>Home!</Text>
@@ -131,6 +136,7 @@ class HomeScreen extends React.Component {
         <Icon name="american-sign-language-interpreting" size={30} color="#777" /> 
 
       </View>
+      </SafeAreaView>
     );
   }
 }
@@ -141,6 +147,8 @@ class HelloWorld extends React.Component {
 
   render() {
     return (
+      <SafeAreaView style={styles.container}>
+
       <View style={styles.container}>
 
         <TextInput
@@ -154,12 +162,15 @@ class HelloWorld extends React.Component {
           bgColor='purple'
           fgColor='white'/>
       </View>
+      </SafeAreaView>
     );
   };
 }
 class SettingsScreen extends React.Component {
   render() {
     return (
+      <SafeAreaView style={styles.container}>
+
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Settings!</Text>
         <Icon name="apple" size={30} color="#090" /> 
@@ -170,12 +181,15 @@ class SettingsScreen extends React.Component {
         <Icon name="rocket" size={30} color="#009" /> 
         
       </View>
+      </SafeAreaView>
     );
   }
 }
 class meow extends React.Component {
   render() {
     return (
+      <SafeAreaView style={styles.container}>
+
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 <ScrollView>
         <View style={styles.container}>
@@ -218,6 +232,7 @@ class meow extends React.Component {
         </View>
       </ScrollView>        
         </View>
+        </SafeAreaView>
     );
   }
 }
@@ -225,6 +240,8 @@ class meow extends React.Component {
 class info extends React.Component {
   render() {
     return (
+      <SafeAreaView style={styles.container}>
+
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 {Platform.OS === 'ios' ? (
   <Text style={styles.instructions}>
@@ -278,6 +295,7 @@ class info extends React.Component {
 )}
         
         </View>
+        </SafeAreaView>
     );
   }
 }
@@ -311,10 +329,12 @@ export default createBottomTabNavigator({
         return <Icon name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
       },
     }),
+    
     tabBarOptions: {
       activeTintColor: 'tomato',
       inactiveTintColor: 'gray',
     },
+    
   }
 
 );
