@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBottomTabNavigator,SafeAreaView } from 'react-navigation';
+import { createBottomTabNavigator,SafeAreaView,createStackNavigator } from 'react-navigation';
 import { Component, StyleSheet, Platform, Image,     TextInput
 ,  Button, Text, View, ScrollView, TouchableOpacity, Dimensions,} from 'react-native';
 import firebase from 'react-native-firebase';
@@ -39,7 +39,9 @@ componentDidMount() {
 // 头部左侧
 renderLeftItem() {
     return (
-        <TouchableOpacity onPress={() => { this.props.navigation.navigate('Search') }} style={styles.navLeft}>
+
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('qrcode')}
+        style={styles.navLeft}>
             <Image source={require('./app/img/scanning.png')} style={styles.navIcon} />
             <Text style={styles.navText}>扫一扫</Text>
         </TouchableOpacity>
@@ -48,7 +50,7 @@ renderLeftItem() {
 // 头部中间
 renderTitleItem() {
     return (
-        <TouchableOpacity onPress={() => { this.props.navigation.navigate('Search') }}>
+        <TouchableOpacity onPress={() => { this.props.navigation.navigate('Details') }}>
             <View style={styles.searchBox}>
                 <Image source={require('./app/img/search.png')} style={styles.searchIcon} />
                 <Text style={styles.searchContent}>搜索商品, 共10161款好物</Text>
@@ -59,7 +61,7 @@ renderTitleItem() {
 // 头部右侧
 renderRightItem() {
     return (
-        <TouchableOpacity onPress={() => { this.props.navigation.navigate('MessageCenter') }} style={styles.navRight}>
+        <TouchableOpacity onPress={() => { this.props.navigation.navigate('Details') }} style={styles.navRight}>
             <Image source={require('./app/img/remind.png')} style={styles.navIcon} />
             <Text style={styles.navText}>消息</Text>
         </TouchableOpacity>
@@ -119,6 +121,99 @@ render() {
 }
 
 
+class index_Screen extends React.Component {
+  
+
+
+// 头部左侧
+renderLeftItem() {
+    return (
+
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('qrcode')}
+        style={styles.navLeft}>
+            <Image source={require('./app/img/scanning.png')} style={styles.navIcon} />
+            <Text style={styles.navText}>扫一扫</Text>
+        </TouchableOpacity>
+    )
+}
+// 头部中间
+renderTitleItem() {
+    return (
+        <TouchableOpacity onPress={() => { this.props.navigation.navigate('Details') }}>
+            <View style={styles.searchBox}>
+                <Image source={require('./app/img/search.png')} style={styles.searchIcon} />
+                <Text style={styles.searchContent}>搜索商品, 共10161款好物</Text>
+            </View>
+        </TouchableOpacity>
+    )
+}
+// 头部右侧
+renderRightItem() {
+    return (
+        <TouchableOpacity onPress={() => { this.props.navigation.navigate('Details') }} style={styles.navRight}>
+            <Image source={require('./app/img/remind.png')} style={styles.navIcon} />
+            <Text style={styles.navText}>消息</Text>
+        </TouchableOpacity>
+    )
+}
+
+// 滑动tab
+renderScrollableTab() {
+    
+        return (
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      
+          <Text>Home!</Text>
+          <Icon name="battery-full" size={30} color="#900" /> 
+          <Icon name="battery-three-quarters" size={30} color="#900" /> 
+          <Icon name="battery-half" size={30} color="#900" /> 
+          <Icon name="battery-quarter" size={30} color="#900" /> 
+          <Icon name="battery-empty" size={30} color="#900" /> 
+          <Icon name="bed" size={30} color="#900" /> 
+          <Icon name="american-sign-language-interpreting" size={30} color="#777" /> 
+  
+        </View>
+            
+        )
+    
+    
+}
+
+render() {
+    return (
+      <SafeAreaView style={styles.container}>
+
+        <View style={styles.container}>
+            <CommonHead
+                leftItem={() => this.renderLeftItem()}
+                titleItem={() => this.renderTitleItem()}
+                rightItem={() => this.renderRightItem()}
+            />
+             <View style={{ flex: 1 }}>
+            {this.renderScrollableTab()}
+            </View>
+        </View>
+        </SafeAreaView>
+    );
+}
+}
+
+class DetailsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
+        <Button
+          title="Go to Details"
+          onPress={() => this.props.navigation.navigate('Home')}
+        />
+      </View>
+    );
+  }
+}
+
+
+
 class HomeScreen extends React.Component {
   render() {
     return (
@@ -140,7 +235,7 @@ class HomeScreen extends React.Component {
     );
   }
 }
-class HelloWorld extends React.Component {
+class qrcode extends React.Component {
   state = {
     text: 'http://facebook.github.io/react-native/',
   };
@@ -161,8 +256,13 @@ class HelloWorld extends React.Component {
           size={200}
           bgColor='purple'
           fgColor='white'/>
+           <Button
+        title="Go to Home"
+        onPress={() => this.props.navigation.navigate('Home')}/>
       </View>
       </SafeAreaView>
+
+       
     );
   };
 }
@@ -299,13 +399,19 @@ class info extends React.Component {
     );
   }
 }
+
 export default createBottomTabNavigator({
   scroll: {screen: scroll_Screen},
   Home: { screen: HomeScreen },
   Settings: { screen: SettingsScreen },
   meow: { screen: meow },
   info: { screen: info },
-  HelloWorld: { screen: HelloWorld }
+  qrcode: { screen: qrcode },
+  Details:{ screen:  DetailsScreen},
+  index:{ screen:  index_Screen},
+
+  
+
 
 },{
     navigationOptions: ({ navigation }) => ({
@@ -320,9 +426,15 @@ export default createBottomTabNavigator({
           iconName = "rocket";
         } else if (routeName === 'info') {
           iconName = "android";
-        } else if (routeName === 'HelloWorld') {
+        } else if (routeName === 'qrcode') {
           iconName = "qrcode";
+        } else if (routeName === 'scroll') {
+          iconName = "assistive-listening-systems";
+        } else if (routeName === 'Details') {
+          iconName = "bell-slash";
         }
+
+        
 
         // You can return any component that you like here! We usually use an
         // icon component from react-native-vector-icons
@@ -335,7 +447,8 @@ export default createBottomTabNavigator({
       inactiveTintColor: 'gray',
     },
     
-  }
+  },
+  
 
 );
 
