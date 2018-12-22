@@ -28,6 +28,7 @@
     "react-native-firebase": "^5.1.1",
     "react-native-qrcode": "^0.2.7",
     "react-native-scrollable-tab-view": "^0.10.0",
+    "react-native-swiper": "^1.5.14",
     "react-native-vector-icons": "^6.1.0",
     "react-navigation": "^2.8.1"
   }

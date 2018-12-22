@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Component, StyleSheet, Platform, Image,     TextInput
-,  Button, Text, View, ScrollView } from 'react-native';
+,  Button, Text, View, ScrollView, TouchableOpacity, Dimensions,} from 'react-native';
 import firebase from 'react-native-firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info'
@@ -14,6 +14,7 @@ import CommonHead from './app/components/commonHead';
 
 import Recommend from './app/page/home/recommend';
 import Otherpage from './app/page/home/otherpage';
+const { width, height } = Dimensions.get('window');
 
 
 class scroll_Screen extends React.Component {
@@ -363,5 +364,47 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 5,
 },
+navLeft: {
+  alignItems: 'center',
+  marginLeft: 10,
+},
+navRight: {
+  alignItems: 'center',
+  marginRight: 10,
+},
+navIcon: {
+  height: 20,
+  width: 20,
+},
+navText: {
+  fontSize: 10,
+},
+searchBox: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: width * 0.7,
+  backgroundColor: '#ededed',
+  borderRadius: 5,
+  height: 30,
+},
+searchIcon: {
+  width: 16,
+  height: 16,
+  marginRight: 6,
+},
+searchContent: {
+  color: '#666',
+  fontSize: 14,
+},
+tabBarUnderline: {
+  backgroundColor: '#b4282d',
+  height: 2,
+  width:width/8,
+  marginLeft:6
+}
 
 });
+
+
+
