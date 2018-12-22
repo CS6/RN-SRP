@@ -11,7 +11,19 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+
+      
         <Text>Home!</Text>
+        <Icon name="battery-full" size={30} color="#900" /> 
+        <Icon name="battery-three-quarters" size={30} color="#900" /> 
+        <Icon name="battery-half" size={30} color="#900" /> 
+        <Icon name="battery-quarter" size={30} color="#900" /> 
+        <Icon name="battery-empty" size={30} color="#900" /> 
+        <Icon name="bed" size={30} color="#900" /> 
+        <Icon name="american-sign-language-interpreting" size={30} color="#777" /> 
+
+
+        
       </View>
     );
   }
@@ -43,10 +55,13 @@ class SettingsScreen extends React.Component {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Settings!</Text>
+        <Icon name="apple" size={30} color="#090" /> 
+
         <Text style={styles.instructions}>
         Settings
         </Text>
-        <Icon name="rocket" size={30} color="#900" /> 
+        <Icon name="rocket" size={30} color="#009" /> 
+        
       </View>
     );
   }
@@ -166,9 +181,35 @@ export default createBottomTabNavigator({
   info: { screen: info },
   HelloWorld: { screen: HelloWorld }
 
-  
+},{
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        let iconName;
+        if (routeName === 'Home') {
+          iconName = "address-card";
+        } else if (routeName === 'Settings') {
+          iconName = "500px";
+        } else if (routeName === 'meow') {
+          iconName = "rocket";
+        } else if (routeName === 'info') {
+          iconName = "android";
+        } else if (routeName === 'HelloWorld') {
+          iconName = "qrcode";
+        }
 
-});
+        // You can return any component that you like here! We usually use an
+        // icon component from react-native-vector-icons
+        return <Icon name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
+      },
+    }),
+    tabBarOptions: {
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    },
+  }
+
+);
 
 
 const styles = StyleSheet.create({
