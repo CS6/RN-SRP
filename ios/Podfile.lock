@@ -192,6 +192,13 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.6.1)
+  - React (0.11.0):
+    - React/Core (= 0.11.0)
+  - React/Core (0.11.0)
+  - RNDeviceInfo (0.21.5):
+    - React
+  - RNVectorIcons (6.1.0):
+    - React
 
 DEPENDENCIES:
   - Crashlytics (~> 3.10.9)
@@ -207,6 +214,8 @@ DEPENDENCIES:
   - Firebase/Performance (~> 5.11.0)
   - Firebase/RemoteConfig (~> 5.11.0)
   - Firebase/Storage (~> 5.11.0)
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -242,6 +251,13 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - React
+
+EXTERNAL SOURCES:
+  RNDeviceInfo:
+    :path: "../node_modules/react-native-device-info"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
 
 SPEC CHECKSUMS:
   BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
@@ -276,7 +292,10 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  React: ab1a2e21deb34965c38328d5ec40cc7d12c6050a
+  RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
+  RNVectorIcons: 8c52e1e8da1153613fdef44748e865c25556cb9c
 
-PODFILE CHECKSUM: 81e61cb80d12a845186cac8b790b122df6fdab1d
+PODFILE CHECKSUM: df16b191434df0f46bcabd2bc9e881fdeca6ea9b
 
 COCOAPODS: 1.5.3
