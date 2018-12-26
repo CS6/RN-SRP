@@ -7,7 +7,8 @@ import {
     Dimensions,
     ScrollView,
     TextInput,
-    Button
+    Button,
+    TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -22,7 +23,6 @@ export default class qrcode extends Component {
     state = {
         text: 'http://facebook.github.io/react-native/',
     };
-
     render() {
         return (
             <SafeAreaView style={styles.container}>
