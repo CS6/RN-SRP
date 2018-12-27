@@ -30,4 +30,5 @@ target 'RNFirebaseStarter' do
 
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
+
 end
